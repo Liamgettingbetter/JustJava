@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Just Java</string>
+    <string name="headline">quantity</string>
+    <string name="order">order</string>
+    <string name="score">0</string>
+    <string name="hello">hello</string>
+    <string name="jump">new_activity</string>
+    <string name="price">price</string>
+    <string name="price_value">$0</string>
+    <string name="increment">+</string>
+    <string name="decrement">-</string>
+</resources>
