@@ -12,4 +12,5 @@
     <string name="toppings">topping</string>
     <string name="cream">Whipped cream</string>
     <string name="chocolate">Chocolate</string>
+    <string name="text_hint">Name</string>
 </resources>

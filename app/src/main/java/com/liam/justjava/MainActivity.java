@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         private final Button mButton;
         private final CheckBox mCheck;
         private final CheckBox mChocolate;
+        private final EditText mNameText;
 
         ViewHolder() {
             mButton = findViewById(R.id.order_button);
@@ -44,12 +46,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             mCheck = findViewById(R.id.add_cream);
             mChocolate = findViewById(R.id.add_chocolate);
+            mNameText = findViewById(R.id.edit_name);
         }
 
         public CheckBox getCream() { return mCheck;}
         public CheckBox getChocolate() { return mChocolate; }
         public Button getOrderButton() { return mButton; }
         public Button getJumpButton() { return myButton; }
+        public EditText getNameText() { return mNameText; }
     }
 
     @Override
@@ -141,11 +145,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private String createOrderSummary(int price) {
         StringBuilder sb = new StringBuilder();
-        sb.append("Name : Kaptain Kunal\n");
-        sb.append("Is Wipped Cream Added : " + myWidgets.getCream().isChecked() + "\n");
-        sb.append("Is Chocolate Added : " + myWidgets.getChocolate().isChecked() + "\n");
-        sb.append("Quantity : " + quantity + "\n");
-        sb.append("Total : $" + calculatePrice(quantity));
+        sb.append("Name : ").append(myWidgets.getNameText().getText()).append("\n");
+        sb.append("Is Wipped Cream Added : ").append(myWidgets.getCream().isChecked()).append("\n");
+        sb.append("Is Chocolate Added : ").append(myWidgets.getChocolate().isChecked()).append("\n");
+        sb.append("Quantity : ").append(quantity).append("\n");
+        sb.append("Total : $").append(calculatePrice(quantity));
         return sb.toString();
     }
 }
