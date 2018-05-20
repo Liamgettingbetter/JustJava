@@ -5,8 +5,11 @@
     <string name="score">0</string>
     <string name="hello">hello</string>
     <string name="jump">new_activity</string>
-    <string name="price">price</string>
-    <string name="price_value">$0</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="price_value">Total : $0</string>
     <string name="increment">+</string>
     <string name="decrement">-</string>
+    <string name="toppings">topping</string>
+    <string name="cream">Whipped cream</string>
+    <string name="chocolate">Chocolate</string>
 </resources>
