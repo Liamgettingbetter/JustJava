@@ -9,17 +9,24 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    // private ViewHolder
     private static int quantity = 0;
 
     private boolean isCreamAdded = false;
 
+    // A view holder for all the used widgets.
     private ViewHolder myWidgets;
+
+    // Prices for coffee and all kinds of toppings.
+    private int coffeePrice = 5;
+    private int creamPrice = 1;
+    private int chocolatePrice = 2;
+
 
     /**
      * To use a ViewHolder class to encapsulate all the Widgets,
@@ -49,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mNameText = findViewById(R.id.edit_name);
         }
 
+        /* Getter methods for all the widgets. */
         public CheckBox getCream() { return mCheck;}
         public CheckBox getChocolate() { return mChocolate; }
         public Button getOrderButton() { return mButton; }
@@ -61,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Initialize all the View widget.
         myWidgets = new ViewHolder();
     }
 
@@ -78,13 +87,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void increment(View v) {
         // int quantity = 3;
-        quantity += 1;
+        if(quantity < 100)
+            quantity += 1;
+        else
+            Toast.makeText(this, "Sorry, but you can't buy more than 100 cups of coffees.",
+                    Toast.LENGTH_SHORT).show();
         displayQuantity(quantity);
     }
 
     public void decrement(View v) {
         // int quantity = 2;
-        quantity -= 1;
+        if(quantity > 1)
+            quantity -= 1;
+        else
+            Toast.makeText(this, "Sorry, but you just buy negative cups of coffees.",
+                    Toast.LENGTH_SHORT).show();
         displayQuantity(quantity);
     }
 
@@ -135,7 +152,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @param quantity the quantity of coffees.
      */
     private int calculatePrice(int quantity) {
-        return quantity * 5;
+        int unit_price = coffeePrice;
+        if(myWidgets.getCream().isChecked()) unit_price += creamPrice;
+        if(myWidgets.getChocolate().isChecked()) unit_price += chocolatePrice;
+
+        return quantity * unit_price;
     }
 
     /**
