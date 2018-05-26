@@ -3,8 +3,10 @@ package com.liam.justjava;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -85,34 +87,64 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /**
+     * Methods to increment the number of items in order panel.
+     * @param v the Click Button to increment the number of items.
+     */
     public void increment(View v) {
         // int quantity = 3;
         if(quantity < 100)
             quantity += 1;
-        else
-            Toast.makeText(this, "Sorry, but you can't buy more than 100 cups of coffees.",
-                    Toast.LENGTH_SHORT).show();
+        else {
+            String toastText = getString(R.string.toast_upper_limit_text);
+            Toast.makeText(this, toastText, Toast.LENGTH_SHORT).show();
+
+            // Use Customed Toast View.
+            // LayoutInflater inflater = getLayoutInflater();
+            // View toastView = inflater.inflate(R.layout.my_toast_view,
+            //        (ViewGroup)findViewById(R.id.my_custom_toast_view),
+            //        true);
+
+            // Toast toast = new Toast(getApplicationContext());
+            // toast.setGravity(Gravity.CENTER, 0, 0);
+            // toast.setDuration(Toast.LENGTH_SHORT);
+            // toast.setView(toastView);
+            // toast.show();
+        }
         displayQuantity(quantity);
     }
 
+    /**
+     * Methods invoked when decrement button has been clicked.
+     * @param v the decrement button clicked.
+     */
     public void decrement(View v) {
         // int quantity = 2;
         if(quantity > 1)
             quantity -= 1;
-        else
-            Toast.makeText(this, "Sorry, but you just buy negative cups of coffees.",
-                    Toast.LENGTH_SHORT).show();
+        else {
+            String toastText = getString(R.string.toast_lower_limit_text);
+            Toast.makeText(this, toastText, Toast.LENGTH_SHORT).show();
+        }
         displayQuantity(quantity);
     }
 
+    /**
+     * Methods to display the order information that our customers have produced.
+     * @param v Order Button widget clicked to display order information.
+     */
     public void submitOrder(View v) {
         // int number_of_coffees = 2;
         //display(quantity);
         //displayPrice(quantity * 5);
-        String orderMessage = createOrderSummary(5);
+        String orderMessage = createOrderSummary();
         displayMessage(orderMessage);
     }
 
+    /**
+     * Methods called when CheckBox widget is clicked.
+     * @param v the CheckBox View object being clicked.
+     */
     public void onCheckBoxClicked(View v) {
         if(isCreamAdded)
             isCreamAdded = false;
@@ -161,16 +193,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * Create a Order receipt that contains the quantity and total costs of items.
-     * @param price price for each item.
      * @return a String denoting order information.
      */
-    private String createOrderSummary(int price) {
+    private String createOrderSummary() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Name : ").append(myWidgets.getNameText().getText()).append("\n");
-        sb.append("Is Wipped Cream Added : ").append(myWidgets.getCream().isChecked()).append("\n");
-        sb.append("Is Chocolate Added : ").append(myWidgets.getChocolate().isChecked()).append("\n");
-        sb.append("Quantity : ").append(quantity).append("\n");
-        sb.append("Total : $").append(calculatePrice(quantity));
+        sb.append(getString(R.string.order_info_name)).append(myWidgets.getNameText().getText()).append("\n");
+        sb.append(getString(R.string.order_info_cream)).append(myWidgets.getCream().isChecked()).append("\n");
+        sb.append(getString(R.string.order_info_choco)).append(myWidgets.getChocolate().isChecked()).append("\n");
+        sb.append(getString(R.string.order_info_quantity)).append(quantity).append("\n");
+        sb.append(getString(R.string.order_info_total_price)).append(calculatePrice(quantity));
         return sb.toString();
     }
 }

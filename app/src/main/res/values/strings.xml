@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <resources>
     <string name="app_name">Just Java</string>
     <string name="headline">quantity</string>
@@ -13,4 +14,13 @@
     <string name="cream">Whipped cream</string>
     <string name="chocolate">Chocolate</string>
     <string name="text_hint">Name</string>
+    <string name="toast_upper_limit_text">Sorry, but you can\'t buy more than 100 cups of coffees.</string>
+    <string name="toast_lower_limit_text">Sorry, but you can\'t buy negative cups of coffees.</string>
+
+    <!-- All the strings below are used in the Order Information Presentation. -->
+    <string name="order_info_name">Name : </string>
+    <string name="order_info_cream">Is Whipped Cream Added : </string>
+    <string name="order_info_choco">Is Chocolate Added : </string>
+    <string name="order_info_quantity">Quantity : </string>
+    <string name="order_info_total_price">Total : $</string>
 </resources>

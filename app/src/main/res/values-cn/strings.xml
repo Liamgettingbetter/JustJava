@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <string name="app_name">Just Java</string>
+    <string name="headline">quantity</string>
+    <string name="order">order</string>
+    <string name="score">0</string>
+    <string name="hello">你好哇</string>
+    <string name="jump">new_activity</string>
+    <string name="order_summary">订单汇总</string>
+    <string name="price_value">总价 : $0</string>
+    <string name="increment" translatable="false">+</string>
+    <string name="decrement" translatable="false">-</string>
+    <string name="toppings">顶料</string>
+    <string name="cream">搅拌奶油</string>
+    <string name="chocolate">巧克力</string>
+    <string name="text_hint">顾客姓名</string>
+    <string name="toast_upper_limit_text">抱歉，您的订单数量不能超过100呐～</string>
+    <string name="toast_lower_limit_text">抱歉，订单数量不能小于1呐～</string>
+
+    <!-- All the string resources below are used only in Order Information Presentation. -->
+    <string name="order_info_name">顾客姓名 : </string>
+    <string name="order_info_cream">是否添加搅拌奶油 : </string>
+    <string name="order_info_choco">是否添加巧克力 : </string>
+    <string name="order_info_quantity">咖啡数量 : </string>
+    <string name="order_info_total_price">总价 : $</string>
+</resources>
